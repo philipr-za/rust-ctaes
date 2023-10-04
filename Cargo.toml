@@ -1,0 +1,15 @@
+[package]
+name = "ctaes"
+version = "0.1.0"
+authors = ["Blockstream <support@blockstream.com>"]
+links = "ctaes"
+
+[dependencies]
+thiserror = "1.0.30"
+zeroize = "1"
+
+[dev-dependencies]
+bitcoin_hashes = "0.10.0"
+
+[build-dependencies]
+cc = "^1.0"

@@ -8,3 +8,9 @@ use the AES-CBC methods.
 
 The crate also provides a Padding utility implementation to help the user prepare, pad and unpad
 buffers. Zero Padding and PKCS7 padding implementations are provided
+
+Run `cargo doc --nodeps` to generate the documentation of the library.
+
+# Note
+This is a low-level encryption library and should be employed in conjunction with a message 
+authentication scheme to avoid chosen-ciphertext and chosen-plaintext attacks.
