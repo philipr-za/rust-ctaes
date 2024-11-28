@@ -3,6 +3,7 @@ name = "ctaes"
 version = "0.1.0"
 authors = ["Blockstream <support@blockstream.com>"]
 links = "ctaes"
+edition = "2015"
 
 [dependencies]
 thiserror = "1.0.30"

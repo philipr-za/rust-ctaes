@@ -74,7 +74,7 @@ pub trait AesBlockCipher: FfiAesCipher {
         Ok(())
     }
 
-    /// Decrypt the contents of `ciphertext` and place the result in the `plaintext` out paramter
+    /// Decrypt the contents of `ciphertext` and place the result in the `plaintext` out parameter
     fn decrypt(&self, ciphertext: &[u8], plaintext: &mut [u8]) -> Result<(), Error> {
         if plaintext.len() % AES_BLOCK_SIZE != 0 {
             return Err(Error::NonBlockSizeAlignedBuffer);
