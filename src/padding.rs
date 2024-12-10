@@ -10,8 +10,8 @@ use Error;
 pub trait Padding {
     /// Given a length of data and block_size return the minimum size of a buffer required to hold
     /// the padded data
-    fn padded_buffer_length(data_lengthgth: usize, block_size: usize) -> usize;
-    /// Take a buffer contained data, of specified length, and based on the blocksize apply the padding
+    fn padded_buffer_length(data_length: usize, block_size: usize) -> usize;
+    /// Take a buffer containing data of specified length and based on the blocksize apply the padding
     /// to the buffer. The returned slice will reference the slice of padded data in the buffer
     fn pad(buffer: &mut [u8], data_length: usize, block_size: usize) -> Result<&[u8], Error>;
     /// Given a buffer of padded data, attempt to provide a slice that references
@@ -19,7 +19,7 @@ pub trait Padding {
     fn unpad(buffer: &[u8]) -> Result<&[u8], Error>;
 }
 
-/// Implementation of basic Zero Padding. May not be reversable if the original data ends with one
+/// Implementation of basic Zero Padding. May not be reversible if the original data ends with one
 /// or more zero bytes. Does not add an extra block of padding if the data length is already a
 /// multiple of the block size
 pub enum ZeroPadding {}
@@ -84,7 +84,7 @@ impl Padding for Pkcs7 {
             Some(l) => *l,
         };
         if buffer.len() < padding_length as usize {
-            return Err(Error::UnpadError("Buffer smaller than PKCS7 recording padded length".to_string()));
+            return Err(Error::UnpadError("Buffer smaller than PKCS7 recorded padded length".to_string()));
         }
         if padding_length == 0 {
             return Err(Error::UnpadError("PKCS7 padding length can't be zero".to_string()))
@@ -141,8 +141,7 @@ mod test {
         let mut buffer = [2u8; 2 * BLOCK_SIZE + 1];
 
         buffer[0..2 * BLOCK_SIZE].fill(1u8);
-
-
+        
         let padded_buffer =
             Pkcs7::pad(buffer.as_mut_slice(), DATA_LENGTH, BLOCK_SIZE).unwrap();
 
