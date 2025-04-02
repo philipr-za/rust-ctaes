@@ -10,8 +10,8 @@
 //! # Examples
 //!
 //! ```
-//! extern crate bitcoin_hashes;
-//! use bitcoin_hashes::hex::FromHex;
+//! extern crate hex_conservative;
+//! use hex_conservative::FromHex;
 //! use ctaes::{Padding, Pkcs7, AesCbcBlockCipher, Aes128Cbc};
 //!
 //! let key = <[u8; 16]>::from_hex("2b7e151628aed2a6abf7158809cf4f3c").unwrap();

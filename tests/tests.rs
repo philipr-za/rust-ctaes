@@ -4,11 +4,10 @@
 * file COPYING or https://opensource.org/licenses/mit-license.php.   *
 **********************************************************************/
 
-extern crate bitcoin_hashes;
+extern crate hex_conservative;
 extern crate ctaes;
 
-
-use bitcoin_hashes::hex::FromHex;
+use hex_conservative::FromHex;
 use ctaes::{Aes128, Aes128Cbc, Aes192, Aes256, AesBlockCipher, AesCbcBlockCipher};
 use ctaes::Aes256Cbc;
 use ctaes::Aes192Cbc;
