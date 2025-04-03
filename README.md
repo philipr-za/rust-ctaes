@@ -14,3 +14,6 @@ Run `cargo doc --nodeps` to generate the documentation of the library.
 # Note
 This is a low-level encryption library and should be employed in conjunction with a message 
 authentication scheme to avoid chosen-ciphertext and chosen-plaintext attacks.
+
+# Compatibility
+This crate requires Rust 1.63.0 or later.
