@@ -266,7 +266,7 @@ impl<'a> Aes128Cbc<'a> {
     }
 }
 
-impl<'a> FfiAesCbcCipher for Aes128Cbc<'a> {
+impl FfiAesCbcCipher for Aes128Cbc<'_> {
     fn ffi_decrypt(&self, num_blocks: usize, plaintext: &mut [u8], ciphertext: &[u8]) {
         let mut context = AES128_CBC_ctx::default();
         unsafe {
@@ -294,7 +294,7 @@ impl<'a> FfiAesCbcCipher for Aes128Cbc<'a> {
     }
 }
 
-impl<'a> AesCbcBlockCipher for Aes128Cbc<'a> {}
+impl AesCbcBlockCipher for Aes128Cbc<'_> {}
 
 /// 192-bit AES-CBC cipher
 pub struct Aes192Cbc<'a> {
@@ -315,7 +315,7 @@ impl<'a> Aes192Cbc<'a> {
     }
 }
 
-impl<'a> FfiAesCbcCipher for Aes192Cbc<'a> {
+impl FfiAesCbcCipher for Aes192Cbc<'_> {
     fn ffi_decrypt(&self, num_blocks: usize, plaintext: &mut [u8], ciphertext: &[u8]) {
         let mut context = AES192_CBC_ctx::default();
         unsafe {
@@ -343,7 +343,7 @@ impl<'a> FfiAesCbcCipher for Aes192Cbc<'a> {
     }
 }
 
-impl<'a> AesCbcBlockCipher for Aes192Cbc<'a> {}
+impl AesCbcBlockCipher for Aes192Cbc<'_> {}
 
 /// 256-bit AES-CBC cipher
 pub struct Aes256Cbc<'a> {
@@ -364,7 +364,7 @@ impl<'a> Aes256Cbc<'a> {
     }
 }
 
-impl<'a> FfiAesCbcCipher for Aes256Cbc<'a> {
+impl FfiAesCbcCipher for Aes256Cbc<'_> {
     fn ffi_decrypt(&self, num_blocks: usize, plaintext: &mut [u8], ciphertext: &[u8]) {
         let mut context = AES256_CBC_ctx::default();
         unsafe {
@@ -392,7 +392,7 @@ impl<'a> FfiAesCbcCipher for Aes256Cbc<'a> {
     }
 }
 
-impl<'a> AesCbcBlockCipher for Aes256Cbc<'a> {}
+impl AesCbcBlockCipher for Aes256Cbc<'_> {}
 
 #[cfg(test)]
 mod test {
