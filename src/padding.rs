@@ -72,7 +72,7 @@ impl Padding for Pkcs7 {
             return Err(Error::PaddedBufferTooSmall);
         }
 
-        let padding_length = padded_length-data_length;
+        let padding_length = padded_length - data_length;
 
         buffer[data_length..padded_length].fill(padding_length as u8);
         Ok(&buffer[0..padded_length])
@@ -84,10 +84,12 @@ impl Padding for Pkcs7 {
             Some(l) => *l,
         };
         if buffer.len() < padding_length as usize {
-            return Err(Error::UnpadError("Buffer smaller than PKCS7 recorded padded length".to_string()));
+            return Err(Error::UnpadError(
+                "Buffer smaller than PKCS7 recorded padded length".to_string(),
+            ));
         }
         if padding_length == 0 {
-            return Err(Error::UnpadError("PKCS7 padding length can't be zero".to_string()))
+            return Err(Error::UnpadError("PKCS7 padding length can't be zero".to_string()));
         }
 
         Ok(&buffer[0..buffer.len() - padding_length as usize])
@@ -141,9 +143,8 @@ mod test {
         let mut buffer = [2u8; 2 * BLOCK_SIZE + 1];
 
         buffer[0..2 * BLOCK_SIZE].fill(1u8);
-        
-        let padded_buffer =
-            Pkcs7::pad(buffer.as_mut_slice(), DATA_LENGTH, BLOCK_SIZE).unwrap();
+
+        let padded_buffer = Pkcs7::pad(buffer.as_mut_slice(), DATA_LENGTH, BLOCK_SIZE).unwrap();
 
         assert_eq!(&padded_buffer[0..DATA_LENGTH], [1u8; DATA_LENGTH].as_slice());
 
