@@ -20,5 +20,5 @@ pub enum Error {
     #[error("Buffer not large enough to accomodate padded buffer")]
     PaddedBufferTooSmall,
     #[error("Unable to unpad buffer: {0}")]
-    UnpadError(String)
+    UnpadError(String),
 }
